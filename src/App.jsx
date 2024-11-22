@@ -5,10 +5,10 @@ import PokemonUpdate from './PokemonUpdate';
 
 function Home() {
   return (
-    <div>
-      <div>
-        <h1>Welcome to Pokemon Spawner!</h1>
-        <Link to="/pokemon-spawner">Pokemon Spawner</Link>
+    <div className="flex flex-col justify-center items-center w-full min-h-screen bg-slate-200">
+      <div className="flex flex-col justify-center items-center w-1/4 h-full bg-slate-400 rounded-full border-x-8 border-slate-500 py-36 px-48 ">
+        <h1 className="font-semibold text-2xl text-nowrap text-white">Welcome to Pokemon Spawner!</h1>
+        <Link to="/pokemon-spawner" className="font-semibold text-2xl text-nowrap underline text-blue-500 mt-3">Pokemon Spawner</Link>
       </div>
     </div>
   );
