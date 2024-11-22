@@ -1,6 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
 
@@ -55,6 +56,14 @@ export default function Home() {
       }
     };
   
+    const handleDelete = async (id) => {
+      try {
+        axios.delete(`http://localhost:5000/pokemon-update/delete/${id}`);
+        setPokemons((prevPokemons) => prevPokemons.filter(pokemon => pokemon._id !== id));
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
   return (
     <main className="flex flex-col justify-center items-center bg-slate-400 min-h-screen">
@@ -95,7 +104,7 @@ export default function Home() {
                   <td className="border px-2 md:px-9 font-semibold py-2 md:py-4">{pokemon.name}</td>
                   <td className="border px-2 md:px-9 font-semibold py-2 md:py-4">{pokemon.alias}</td>
                   <td className="border px-2 md:px-9 font-semibold py-2 md:py-4">{pokemon.element}</td>
-                  <td className="flex border md:px-9 px-2 py-2 md:py-4 flex-nowrap"><button className="px-3 py-1 rounded md:px-6 md:py-2 bg-black text-white font-semibold text-sm mr-4">Edit</button><button className="px-3 py-1 rounded md:px-6 md:py-2 font-semibold bg-black text-white text-sm mr-4">Delete</button></td>
+                  <td className="flex border md:px-9 px-2 py-2 md:py-4 flex-nowrap"><Link to={`/pokemon-update/${pokemon._id}`} className="px-3 py-1 rounded md:px-6 md:py-2 bg-black text-white font-semibold text-sm mr-4">Edit</Link><button onClick={() => handleDelete(pokemon._id)} className="px-3 py-1 rounded md:px-6 md:py-2 font-semibold bg-black text-white text-sm mr-4">Delete</button></td>
                 </tr>
               ))
             ) : (

@@ -4,9 +4,7 @@ import dbConnect from '../database/db.js';
 
 dbConnect();
 
-
 const router = express.Router();
-
 
 router.post('/', async (req, res) => {
   const { name, alias, element } = req.body;
@@ -32,11 +30,12 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const pokemons = await Pokemon.find(); // doğru fonksiyon
+    const pokemons = await Pokemon.find();
     res.json(pokemons);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching pokemons', error: err });
   }
 });
+
 
 export default router;

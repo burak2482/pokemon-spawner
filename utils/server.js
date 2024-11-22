@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import router from "./routes/router.js";
+import updatePokemonRouter from "./routes/pokemonupdateroute.js";
 
 const app = express();
 const corsOptions = {
@@ -13,6 +14,7 @@ app.use(express.json());
 
 
 app.use('/api/pokemon', router);
+app.use('/pokemon-update', updatePokemonRouter);
 
 
 app.listen(5000, () => {
