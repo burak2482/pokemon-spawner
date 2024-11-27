@@ -66,16 +66,16 @@ export default function Home() {
     }
 
   return (
-    <main className="flex flex-col justify-center items-center bg-slate-400 min-h-screen">
-      <section className="flex flex-col justify-center items-center h-1/4 w-1/4 py-24 px-44 bg-slate-500 rounded-3xl">
+    <main className="flex flex-col justify-center items-center bg-customPink min-h-screen">
+      <section className="flex flex-col justify-center items-center h-1/4 w-1/4 py-24 px-44 bg-customWhite rounded-3xl">
         <h1 className="font-semibold text-3xl mb-10 text-nowrap">Pokemon Spawner</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col justify-center gap-2 bg-slate-500 text-black">
-          <label>Pokemon Name</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-          <label>Pokemon alias</label>
-          <input type="text" value={alias} onChange={(e) => setAlias(e.target.value)} />
-          <label>Pokemon Elements</label>
-          <select value={element} onChange={(e) => setElement(e.target.value)}>
+        <form onSubmit={handleSubmit} className="flex flex-col justify-center gap-2 bg-customWhite text-black">
+          <label className="font-semibold">Pokemon Name</label>
+          <input className="bg-slate-50" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <label className="font-semibold">Pokemon alias</label>
+          <input className="bg-slate-50" type="text" value={alias} onChange={(e) => setAlias(e.target.value)} />
+          <label className="font-semibold">Pokemon Elements</label>
+          <select className="bg-slate-50" value={element} onChange={(e) => setElement(e.target.value)}>
             <option value="">Select Element</option>
             <option value="Earth">Earth</option>
             <option value="Fire">Fire</option>
@@ -83,7 +83,7 @@ export default function Home() {
             <option value="Water">Water</option>
             <option value="Dark">Dark</option>
           </select>
-          <button type="submit" className="font-medium text-xl py-3 px-16 text-nowrap bg-slate-600 mt-3 rounded-full">Add Pokemon</button>
+          <button type="submit" className="font-medium text-xl py-3 px-16 text-nowrap text-white bg-customGreen mt-5 rounded-full">Add Pokemon</button>
         </form>
       </section>
       <section className="flex justify-center items-center w-full h-full">

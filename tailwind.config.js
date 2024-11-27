@@ -1,11 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        customPink: '#f1f1f1',
+        customWhite: '#fff',
+        customGreen: '#1aac83',
+      },
+    },
   },
   plugins: [],
-}
+};
+
+export default config;

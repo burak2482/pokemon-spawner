@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <header>
-      <div className="flex flex-row justify-between items-center py-2 md:py-4 md:px-16">
-        <Link to="/" className="font-semibold text-xl ml-3 md:text-3xl text-nowrap">
+      <div className="flex flex-row justify-between items-center py-2 md:py-4 md:px-16 bg-customWhite">
+        <Link to="/" className="font-bold text-xl ml-3 md:text-3xl text-nowrap">
           Pokemon Spawner
         </Link>
         <nav>
