@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import PokemonHomePage from './PokemonHomePage';
 import PokemonUpdate from './PokemonUpdate';
+import Signup from './Signup';
+import Login from './Login';
+import Navbar from './Navbar';
 
 function Home() {
   return (
@@ -18,8 +21,11 @@ const App = () => {
   return (
     <Router>
       <div>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/pokemon-spawner" element={<PokemonHomePage />} />
           <Route path="/pokemon-update/:id" element={<PokemonUpdate />} />
         </Routes>
