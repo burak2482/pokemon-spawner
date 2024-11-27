@@ -5,9 +5,14 @@ const Navbar = () => {
   return (
     <header>
       <div className="flex flex-row justify-between items-center py-2 md:py-4 md:px-16 bg-customWhite">
+        <div className="flex flex-row justify-center items-center">
         <Link to="/" className="font-bold text-xl ml-3 md:text-3xl text-nowrap">
-          Pokemon Spawner
-        </Link>
+        <img src='./bulbasaur.png'/>
+          </Link>
+          <Link to="/" className="font-bold text-xl ml-3 md:text-3xl text-nowrap">
+              Pokemon Spawner
+          </Link>
+        </div>
         <nav>
           <div>
             <Link to="/login" className="mr-2 text-lg md:mr-16 md:text-2xl font-semibold px-2 border-2 border-lime-400 rounded-sm">Login</Link>
