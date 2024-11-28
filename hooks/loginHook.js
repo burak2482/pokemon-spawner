@@ -21,7 +21,7 @@ export const useLogin = () => {
       },
     });
 
-    const json = await response.data
+    const json = response.data
 
     if (response.status >= 200 && response.status < 300) {
       if (json && json.email && json.token) {

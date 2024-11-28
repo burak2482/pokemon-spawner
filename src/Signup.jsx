@@ -29,7 +29,7 @@ const Signup = () => {
           <label className="font-semibold text-xl mb-3">Password:</label>
           <input type='password' placeholder="Password"className="border border-x-2 px-6 text-left font-semibold" value={password} onChange={(e) => setPassword(e.target.value)}></input>
           <button disabled={isLoading} className="py-2 px-10 bg-slate-700 font-semibold text-white rounded-full mt-5 active:bg-slate-600">Sign up</button>
-          {error && <div>{error}</div>}
+          {error && <div className="border-2 border-red-400 bg-red-200 font-semibold rounded-sm py-1 px-2 mt-3">{error}</div>}
         </form>
       </div>
     </div>

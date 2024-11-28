@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/logoutHook'
+import { AuthContext } from '../context/authContext';
+import { useContext } from "react";
 
 const Navbar = () => {
 
   const { logout } = useLogout()
+  const { user } = useContext(AuthContext)
 
   const handleLogout = () => {
     logout()
@@ -22,13 +25,14 @@ const Navbar = () => {
           </Link>
         </div>
         <nav>
-          <div>
+          {user && (<div>
+            <span className="font-semibold mr-3 ">{user.email}</span>
             <button className="mr-2 text-lg md:mr-16 md:text-2xl font-semibold px-2 border-2 text-customGreen border-customGreen rounded-sm" onClick={handleLogout}>Log out</button>
-          </div>
-          <div>
+          </div>)}
+          {!user && (<div>
             <Link to="/login" className="mr-2 text-lg md:mr-16 md:text-2xl font-semibold px-2 border-2 border-lime-400 rounded-sm">Login</Link>
             <Link to="/signup" className="mr-2 text-lg md:mr-10 md:text-2xl font-semibold px-2 border-2 border-lime-400 rounded-sm">Signup</Link>
-          </div>
+          </div>)}
         </nav>
       </div>
     </header>
