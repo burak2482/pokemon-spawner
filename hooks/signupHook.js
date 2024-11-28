@@ -1,40 +1,57 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
-import axios from 'axios'
+import axios from 'axios';
 
 export const useSignup = () => {
-  const [error, setError] = useState(null)
-  const [isLoading, setisLoading] = useState(null)
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { dispatch } = useContext(AuthContext);
 
   const signup = async (email, password) => {
-    setisLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
 
-    const response = await axios.post('http://localhost:5000/user/signup', {
-      email,
-      password
-    });
+    try {
+      const response = await axios.post('http://localhost:5000/user/signup', {
+        email,
+        password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    
+      console.log(response);
 
-    const json = await response.data
+      const json = response.data;
 
-    if (response.status >= 200 && response.status < 300) {
-      if (json && json._id) {
-        localStorage.setItem('user', JSON.stringify(json));
-        dispatch({ type: 'LOGIN', payload: json });
+      if (response.status >= 200 && response.status < 300) {
+        if (json && json.email && json.token) {
+          localStorage.setItem('user', JSON.stringify(json));
+          dispatch({ type: 'LOGIN', payload: json });
+        } else {
+          setError('User data is incomplete');
+        }
       } else {
-        setError('User data is incomplete');
+        setError(json.error || 'There is a error while signup');
       }
-      setisLoading(false);
-    } else {
-      setisLoading(false);
-      setError(json.error);
+    } catch (error) {
+      if (error.response) {
+        console.log('Error:', error.response.data.error);
+        setError(error.response.data.error || 'A mistake happened');
+      } else if (error.request) {
+        console.log('There is no request:', error.request);
+        setError('There is no request in the server');
+      } else {
+        console.log('Axios Error:', error.message);
+        setError('A mistake happened');
+      }
     }
-    
-  }
+     finally {
+      setIsLoading(false);
+    }
+  };
 
-  return {signup, isLoading, error}
-}
+  return { signup, isLoading, error };
+};

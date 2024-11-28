@@ -14,18 +14,22 @@ export const useLogin = () => {
 
     const response = await axios.post('http://localhost:5000/user/login', {
       email,
-      password
+      password,
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
     const json = await response.data
 
     if (response.status >= 200 && response.status < 300) {
-      if (json && json._id) {
+      if (json && json.email && json.token) {
         localStorage.setItem('user', JSON.stringify(json));
         dispatch({ type: 'LOGIN', payload: json });
       } else {
         setError('User data is incomplete');
-      }
+      }      
       setisLoading(false);
     } else {
       setisLoading(false);

@@ -9,11 +9,15 @@ const Signup = () => {
   const {signup, error, isLoading} = useSignup()
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    await signup(email, password)
-  }
-
+    e.preventDefault();
+    
+    if (!email || !password) {
+      // Kullanıcıdan gerekli veriler eksikse, hata mesajı göster
+      return alert("Email ve şifre gereklidir!");
+    }
+  
+    await signup(email, password);
+  };
   return (
     <div className="flex flex-col justify-center items-center bg-customPink min-h-screen">
       <div className="flex flex-col justify-center items-center w-1/4 h-full py-24 px-48 bg-customWhite rounded-3xl">
