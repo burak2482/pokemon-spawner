@@ -3,6 +3,7 @@ import cors from "cors";
 import router from "./routes/router.js";
 import updatePokemonRouter from "./routes/pokemonupdateroute.js";
 import userRouter from "./routes/loginRouter.js";
+// import { requireAuth } from "../middleware/requireAuth.js";
 
 const app = express();
 const corsOptions = {
@@ -12,6 +13,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+
+// app.use(requireAuth)
+
 
 
 app.use('/api/pokemon', router);
